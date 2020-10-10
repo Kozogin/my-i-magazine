@@ -35,13 +35,16 @@ $(document).ready(
 					});
 		});
 
+
+
+
 $(document).ready(function() {
 	$("button.closeButton").click(function() {
 		
 		var magazineId = jQuery(this).attr('magazine-id');
-		
+				
 		$.post("bucketContr", {'magazineId' : magazineId}, function(data) {
-
+						
 			if (data == 'Success') {
 				
 				alert('Success');
@@ -55,3 +58,4 @@ $(document).ready(function() {
 
 	});
 });
+

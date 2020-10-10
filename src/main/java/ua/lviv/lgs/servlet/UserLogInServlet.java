@@ -2,6 +2,7 @@ package ua.lviv.lgs.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,33 +36,41 @@ public class UserLogInServlet extends HttpServlet {
 		System.out.println("doget");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("dopost");
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String password = request.getParameter("password");	
+		//String userId = request.getParameter("id");
 		
-		System.out.println(email);
-		
+		 
+				
 		User user = userService.readByEmail(email);
 		if (user == null) {
-			try {
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			} catch (ServletException | IOException e) {
+			try {				
+				
+				response.sendRedirect("index.jsp");		
+				
+//				request.getRequestDispatcher("index.jsp").forward(request, response);
+			} catch (Exception e) {
 				LOGGER.error(e);
 			}
 		}
 		
-		if(user != null &&user.getPassword().equals(password)) {
+		if(user != null && user.getPassword().equals(password)) {
 			
 			try {
 				
 				HttpSession session = request.getSession(true);
 				session.setAttribute("userId", user.getId());
 				session.setAttribute("userEmail", user.getEmail());
+				session.setAttribute("role", user.getRole().toString());
 				
 				UserLogin userLogin = new UserLogin();
 				userLogin.destinationUrl = "cabinet.jsp";
 				userLogin.userEmail = user.getEmail();
+				UserLogin.userId = user.getId();
+				
+				System.out.println(UserLogin.userId);
 				
 				String json = new Gson().toJson(userLogin);
 			    response.setContentType("application/json");
@@ -69,6 +78,9 @@ public class UserLogInServlet extends HttpServlet {
 			    response.getWriter().write(json);
 			    
 			    System.out.println("dispatcher ok");
+				
+//			    RequestDispatcher rd = getServletContext().getRequestDispatcher("/buckets?userId="+ userId);
+//				rd.forward(request, response);
 				
 			} catch (IOException e) {
 				System.out.println("seach mistake");
@@ -87,3 +99,5 @@ public class UserLogInServlet extends HttpServlet {
 //css set footer always button
 //bootstrap form css template
 //https://colorlib.com/wp/bootstrap-form-templates/
+
+//filter search table

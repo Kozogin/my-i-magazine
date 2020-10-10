@@ -22,15 +22,6 @@ public class UserRegistrationServlet extends HttpServlet {
 	
 	private UserService userService = UserServiceImpl.getUserService();
 	
-	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("registration do get");
-		try {
-			request.getRequestDispatcher("registrationForm.jsp").forward(request, response);
-		} catch (ServletException | IOException e) {
-			LOGGER.error(e);
-		}
-	}*/
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 		
 		System.out.println("regis dopost");
@@ -59,20 +50,7 @@ public class UserRegistrationServlet extends HttpServlet {
 					} catch (IOException e) {
 						LOGGER.error(e);
 					}
-					
-//					request.getRequestDispatcher("cabinet.jsp").forward(request, response);
-					
-					
-					
-				
-				
-			} /*else {
-				try {
-					request.getRequestDispatcher("registrationForm.jsp").forward(request, response);
-				} catch (ServletException | IOException e) {
-					LOGGER.error(e);
-				}
-			}*/
+			} 
 		}
 		
 	}

@@ -1,6 +1,9 @@
 package ua.lviv.lgs.service.impl;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import ua.lviv.lgs.dao.MagazineDao;
 import ua.lviv.lgs.dao.impl.MagazineDaoImpl;
@@ -53,6 +56,12 @@ public class MagazineServiceImpl implements MagazineService{
 	@Override
 	public Magazine readByIsbn(String isbn) {		
 		return magazineDao.readByIsbn(isbn);
+	}
+
+	@Override
+	public Map<Integer, Magazine> readAllMap() {
+		/*List<Magazine> magazine = readAll();	*/	
+		return readAll().stream().collect(Collectors.toMap(Magazine::getId, Function.identity()));
 	}
 
 	

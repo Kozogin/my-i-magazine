@@ -21,6 +21,8 @@ function loginRegisterSwitch(){
 $(document).ready(function() {
 	$("button.register").click(function() {
 		
+		
+		
 	var email = $("form.register-form input.email").val();
 	var password = $("form.register-form input.password").val();
 	var cpassword = $("form.register-form input.cpassword").val();
@@ -87,8 +89,11 @@ $(document).ready(function() {
 			
 			
 			
-			customUrl += data.destinationUrl;			
+			customUrl += data.destinationUrl;
 			
+			/*var userLogin = data;			
+			alert(userLogin.userEmail);*/
+						
 			if(customUrl.includes('undefined')){
 				window.location.href = oldUrlContent;
 			} else {			
@@ -99,6 +104,9 @@ $(document).ready(function() {
 		}		
 		
 	});
+		
+		
+		
 		
 	}
 	});

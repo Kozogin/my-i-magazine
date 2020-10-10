@@ -4,6 +4,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="css/cabinet.css">
+<link rel="stylesheet" href="css/header.css">
+
 <title>Cabinet</title>
 </head>
 <body>
@@ -27,6 +34,9 @@
 	<jsp:include page="footer.jsp"></jsp:include>
 
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	
+	
+	
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -40,8 +50,9 @@
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-	<script src="js/header.js"></script>
 	<script src="js/cabinet.js"></script>
+	<script src="js/header.js"></script>
+	
 
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
@@ -69,8 +70,15 @@ public class MagazineController extends HttpServlet {
 		String id = request.getParameter("id");
 		
 		Magazine magazine = magazineService.read(Integer.parseInt(id));
-		request.setAttribute("magazine", magazine);
-		request.getRequestDispatcher("singleMagazine.jsp").forward(request, response);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("magazine",magazine);
+		
+//		request.setAttribute("magazine", magazine);
+		
+		response.sendRedirect("singleMagazine.jsp");
+		
+//		request.getRequestDispatcher("singleMagazine.jsp").forward(request, response);
 	}
 
 	// to update resources

@@ -9,7 +9,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("a.magazine-logout").click(function() {
 
-		$.get("logOut", function(data) {		
+		$.post("logOut", function(data) {		
 			
 			if(data != ''){
 				var customUrl = "";
@@ -25,3 +25,28 @@ $(document).ready(function() {
 
 	});
 });
+
+
+
+
+$(document).ready(function() {
+			
+	var userRole = null;
+	$.get("user-role", function(data) {	
+			
+		if(data !== ''){
+			userRole = data;
+		}
+		
+	}).done(function(){
+		
+		if(userRole === 'ADMINISTRATOR'){
+			$('li.bucketAdminNot').hide();
+		} else{
+			$('li.bucketUserNot').hide();
+		}
+		
+	});
+	
+});
+

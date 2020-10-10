@@ -16,8 +16,6 @@
  <link rel="stylesheet" href="css/login.css">
   
   
-   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-   -->
     <title>i-magazine</title>
   </head>
   <body>
@@ -76,11 +74,6 @@
 	
 	<script src="js/login3.js"></script>
 	
-	
-	
-	<!-- <form action ="registration" method="get">	
-		<input type="submit" value="registration">
-	</form> -->	 
 	
 	<!-- https://getbootstrap.com/docs/4.3/getting-started/introduction/  -->
 	<!--  https://codepen.io/colorlib/pen/rxddKy -->

@@ -6,6 +6,50 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>CabinetFilter</display-name>
+  	<filter-name>CabinetFilter</filter-name>
+  	<filter-class>ua.lviv.lgs.filter.CabinetFilter</filter-class>
+  </filter>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>MagazineFilter</display-name>
+  	<filter-name>MagazineFilter</filter-name>
+  	<filter-class>ua.lviv.lgs.filter.MagazineFilter</filter-class>
+  </filter>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>BucketFilter</display-name>
+  	<filter-name>BucketFilter</filter-name>
+  	<filter-class>ua.lviv.lgs.filter.BucketFilter</filter-class>
+  </filter>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>CreateMagazine</display-name>
+  	<filter-name>CreateMagazine</filter-name>
+  	<filter-class>ua.lviv.lgs.filter.CreateMagazine</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CabinetFilter</filter-name>
+  	<url-pattern>/CabinetFilter</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>MagazineFilter</filter-name>
+  	<url-pattern>/MagazineFilter</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>BucketFilter</filter-name>
+  	<url-pattern>/BucketFilter</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>CreateMagazine</filter-name>
+  	<url-pattern>/CreateMagazine</url-pattern>
+  </filter-mapping>
   <servlet>
     <servlet-name>Login</servlet-name>
     <servlet-class>ua.lviv.lgs.servlet.UserLogInServlet</servlet-class>
@@ -52,6 +96,20 @@
   	<servlet-name>BucketServlet</servlet-name>
   	<servlet-class>ua.lviv.lgs.servlet.BucketServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>BucketsController</display-name>
+  	<servlet-name>BucketsController</servlet-name>
+  	<servlet-class>ua.lviv.lgs.servlet.BucketsController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>UserRoleServlet</display-name>
+  	<servlet-name>UserRoleServlet</servlet-name>
+  	<servlet-class>ua.lviv.lgs.servlet.UserRoleServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
@@ -79,6 +137,14 @@
   <servlet-mapping>
   	<servlet-name>BucketServlet</servlet-name>
   	<url-pattern>/BucketServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BucketsController</servlet-name>
+  	<url-pattern>/BucketsController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserRoleServlet</servlet-name>
+  	<url-pattern>/UserRoleServlet</url-pattern>
   </servlet-mapping>
   
 </web-app>

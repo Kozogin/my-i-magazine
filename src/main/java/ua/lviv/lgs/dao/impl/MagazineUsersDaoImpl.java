@@ -21,7 +21,7 @@ public class MagazineUsersDaoImpl implements MagazineUsersDao{
 	private static String READ_BY_ID = "select * from magazine_users where id = ?";
 	private static String CREATE = "insert into magazine_users(users_id, magazine_id, purchase_date) values(?,?,?)";	
 	private static String DELETE = "delete from magazine_users where users_id = ? and magazine_id = ?";
-	private static String DELETE_ALL_MAGAZINE = "delete from magazine_users where magazine_id = ?";
+	private static String DELETE_ALL_MAGAZINE = "delete from magazine_users where id = ?";
 	
 	private static Logger LOGGER = Logger.getLogger(MagazineUsersDaoImpl.class);
 	
@@ -82,10 +82,10 @@ public class MagazineUsersDaoImpl implements MagazineUsersDao{
 	}
 
 	@Override
-	public void delete(Integer userId) {
+	public void delete(Integer Id) {
 		try {
 			preparedStatement = connection.prepareStatement(DELETE_ALL_MAGAZINE);
-			preparedStatement.setInt(1, userId);			 
+			preparedStatement.setInt(1, Id);			 
 			preparedStatement.executeUpdate();			
 		} catch (SQLException e) {
 			LOGGER.error(e);

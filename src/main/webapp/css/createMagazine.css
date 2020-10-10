@@ -124,14 +124,11 @@ iframe {
 .contact1 {
   width: 100%;
   min-height: 100%;
-  padding: 15px;
+  padding: 5px;
   
 
-  background: #009bff;
-  background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
-  background: -o-linear-gradient(left, #0072ff, #00c6ff);
-  background: -moz-linear-gradient(left, #0072ff, #00c6ff);
-  background: linear-gradient(left, #0072ff, #00c6ff);
+  background: #fff;
+  
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -144,8 +141,14 @@ iframe {
 }
 
 .container-contact1 {
-  width: 1163px;
-  background: #fff;
+  width: 1063px;
+  /* height: 500px; */
+  background: #009bff;
+  background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+  background: -o-linear-gradient(left, #0072ff, #00c6ff);
+  background: -moz-linear-gradient(left, #0072ff, #00c6ff);
+  background: linear-gradient(left, #0072ff, #00c6ff);
+
   border-radius: 10px;
   overflow: hidden; 
   z-index: 3; 
@@ -159,7 +162,7 @@ iframe {
   justify-content: space-between;
   align-items: center;
 
-  padding: 90px 130px 88px 148px;
+  padding: 10px 50px 10px 50px;
 }
 
 /*------------------------------------------------------------------
@@ -186,7 +189,7 @@ iframe {
   color: #333333;
   line-height: 1.2;
   text-align: center;
-  padding-bottom: 44px;
+  padding-bottom: 4px;
 }
 
 input.input1 {
@@ -199,7 +202,7 @@ input.input1 + .shadow-input1 {
 }
 
 textarea.input1 {
-  min-height: 150px;
+  min-height: 80px;
   border-radius: 25px;
   padding: 12px 30px;
 }
@@ -430,3 +433,5 @@ textarea.input1 + .shadow-input1 {
     opacity: 1;
   }
 }
+
+

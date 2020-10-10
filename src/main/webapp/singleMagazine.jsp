@@ -9,6 +9,7 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/single.css">
 
 <title>Single Magazine</title>
 </head>
@@ -20,8 +21,8 @@
 		<div class="row">
 
 			<div class="col">
-				<div class="card">
-					<div class="card-body">
+				<div class="card single-card">
+					<div class="card-body single-card-body">
 						<h5 class="card-title">${magazine.name}</h5>
 						<h6 class="card-subtitle mb-2 text-muted">${magazine.price}</h6>
 						<p class="card-text">${magazine.description}</p>
@@ -38,6 +39,8 @@
 
 		</div>
 	</div>
+	
+	<br><br><br><br><br>
 
 	<div class="modal fade" id="buyMagazineModal" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalLongTitle"

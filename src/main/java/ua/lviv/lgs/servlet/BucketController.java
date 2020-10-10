@@ -2,7 +2,6 @@ package ua.lviv.lgs.servlet;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ua.lviv.lgs.domain.MagazineUsers;
+import ua.lviv.lgs.dto.UserLogin;
 import ua.lviv.lgs.service.MagazineUsersService;
 import ua.lviv.lgs.service.impl.MagazineUsersServiceImpl;
 
@@ -27,8 +27,14 @@ public class BucketController extends HttpServlet {
 		
 		String magazineId = request.getParameter("magazineId");
 		
+		System.out.println("magazine id" + magazineId);
+		
 		HttpSession session = request.getSession();
-		Integer userId = (Integer)session.getAttribute("userId");		
+		
+//		Integer userId = (Integer)session.getAttribute("userId");	
+		
+		Integer userId = UserLogin.userId;
+		
 		MagazineUsers magazineUsers = null;		
 			
 		try {
@@ -37,8 +43,18 @@ public class BucketController extends HttpServlet {
 			
 		}
 		
-		magazineUsersService.create(magazineUsers);
+			magazineUsersService.create(magazineUsers);
 				
+		response.setContentType("text");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write("Success");
+	}
+	
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		String bucketId = request.getParameter("bucketId");		
+		magazineUsersService.delete(Integer.parseInt(bucketId));
+		
 		response.setContentType("text");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write("Success");

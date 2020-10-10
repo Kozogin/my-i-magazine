@@ -14,7 +14,7 @@ public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 4L;
        
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("logout servlet get");
 		HttpSession session = request.getSession();
@@ -29,9 +29,7 @@ public class LogoutServlet extends HttpServlet {
 		
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("logout servlet post");
-	}
+	
 	
 
 }
