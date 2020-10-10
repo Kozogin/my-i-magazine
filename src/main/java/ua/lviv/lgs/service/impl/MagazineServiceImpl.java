@@ -47,5 +47,14 @@ public class MagazineServiceImpl implements MagazineService{
 	public List<Magazine> readAll() {		
 		return magazineDao.readAll();
 	}
+	
+	
+
+	@Override
+	public Magazine readByIsbn(String isbn) {		
+		return magazineDao.readByIsbn(isbn);
+	}
+
+	
 
 }

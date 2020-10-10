@@ -39,7 +39,7 @@ $(document).ready(function() {
 				email : email,
 				password : password,
 				firstName : firstName,
-				lastName, lastName
+				lastName : lastName
 		}
 		
 	$.post("registration", userRegistration, function(data) {
@@ -76,17 +76,24 @@ $(document).ready(function() {
 		
 	$.post("login", userLogin, function(data) {
 		
+		var oldUrlContent = window.location.href;		
+		
 		if(data != ''){
 			var customUrl = "";
 			var urlContent = window.location.href.split('/');
 			for (var i = 0; i < urlContent.length - 1; i++) {
 				customUrl += urlContent[i] + "/";
 			}			
-			customUrl += data.destinationUrl;
+			customUrl += data.destinationUrl;			
 			
-			window.location.href = customUrl;
+			if(customUrl.includes('undefined')){
+				window.location.href = oldUrlContent;
+			} else {			
+				window.location.href = customUrl;
+			}			
+			
 			$("form")[1].reset();
-		}			
+		}		
 		
 	});
 		

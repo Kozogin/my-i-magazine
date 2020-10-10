@@ -10,9 +10,53 @@
     <servlet-name>Login</servlet-name>
     <servlet-class>ua.lviv.lgs.servlet.UserLogInServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AddPeriodicalServlet</display-name>
+  	<servlet-name>AddPeriodicalServlet</servlet-name>
+  	<servlet-class>ua.lviv.lgs.servlet.AddPeriodicalServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>Periodical</display-name>
+  	<servlet-name>Periodical</servlet-name>
+  	<servlet-class>ua.lviv.lgs.servlet.Periodical</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>MagazineServlet</display-name>
+  	<servlet-name>MagazineServlet</servlet-name>
+  	<servlet-class>ua.lviv.lgs.servlet.MagazineServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>LogoutServlet</display-name>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<servlet-class>ua.lviv.lgs.servlet.LogoutServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddPeriodicalServlet</servlet-name>
+  	<url-pattern>/AddPeriodicalServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Periodical</servlet-name>
+  	<url-pattern>/Periodical</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MagazineServlet</servlet-name>
+  	<url-pattern>/MagazineServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
   
 </web-app>

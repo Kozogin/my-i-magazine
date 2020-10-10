@@ -19,6 +19,8 @@ public class Magazine {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.isbn = isbn;
+		
 	}
 
 

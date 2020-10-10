@@ -19,8 +19,10 @@ public class MagazineDaoImpl implements MagazineDao{
 	private static String READ_ALL = "select * from magazine";
 	private static String CREATE = "insert into magazine(name, description, price, isbn) values(?,?,?,?)";
 	private static String READ_BY_ID = "select * from magazine where id = ?";
+	private static String READ_BY_ISBN = "select * from magazine where isbn = ?";
 	private static String UPDATE_BY_ID = "update magazine set name = ?, description = ?, price = ?, isbn = ? where id = ?";
 	private static String DELETE_BY_ID = "delete from magazine where id = ?";
+	
 
 	private Connection connection; 
 	private PreparedStatement preparedStatement;
@@ -41,7 +43,8 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS);	
 			preparedStatement.setString(1, magazine.getName());
 			preparedStatement.setString(2, magazine.getDescription());				
-			preparedStatement.setDouble(3, magazine.getPrice());	
+			preparedStatement.setDouble(3, magazine.getPrice());
+			preparedStatement.setString(4, magazine.getIsbn());
 			
 			preparedStatement.executeUpdate();
 			
@@ -66,6 +69,28 @@ public class MagazineDaoImpl implements MagazineDao{
 			String description =  result.getString("description");
 			Double price = result.getDouble("price");
 			String isbn =  result.getString("isbn");			
+			
+			magazine = new Magazine(name, description, price, isbn);
+			
+		} catch (SQLException e) {
+			LOGGER.error(e);
+		}
+		return magazine;
+	}
+	
+	@Override
+	public Magazine readByIsbn(String isbn) {		
+		Magazine magazine = null;
+		try {
+			preparedStatement = connection.prepareStatement(READ_BY_ISBN);
+			preparedStatement.setString(1, isbn); 
+			ResultSet result = preparedStatement.executeQuery();
+			result.next();
+			int id =  result.getInt("id");
+			String name =  result.getString("name");
+			String description =  result.getString("description");
+			Double price = result.getDouble("price");
+						
 			
 			magazine = new Magazine(name, description, price, isbn);
 			

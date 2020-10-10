@@ -5,4 +5,6 @@ import ua.lviv.lgs.shared.AbstractCRUD;
 
 public interface MagazineDao extends AbstractCRUD <Magazine>{
 
+	Magazine readByIsbn(String isbn);
+
 }

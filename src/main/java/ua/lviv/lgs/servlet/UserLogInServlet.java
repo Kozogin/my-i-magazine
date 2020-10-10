@@ -53,10 +53,11 @@ public class UserLogInServlet extends HttpServlet {
 		if(user != null &&user.getPassword().equals(password)) {
 			
 			try {
+				
 				System.out.println("cabinet");
 				
 				
-				request.setAttribute("email", email);
+//				request.setAttribute("email", email);
 				
 				/*response.setContentType("text/plain");
 				response.setCharacterEncoding("UTF-8");				
@@ -97,3 +98,8 @@ public class UserLogInServlet extends HttpServlet {
 }
 // maven repository gson
 //servlet json response
+//admin sidebar bootstrap  https://www.creative-tim.com/product/light-bootstrap-dashboard
+// header exemple bootsnipp https://bootsnipp.com/snippets/kl5rW
+//css set footer always button
+//bootstrap form css template
+//https://colorlib.com/wp/bootstrap-form-templates/
