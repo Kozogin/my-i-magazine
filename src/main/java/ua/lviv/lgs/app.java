@@ -10,7 +10,8 @@ public class app {
 	
 	public static void main(String[] args) throws SQLException {
 		
-		UserService userService = new UserServiceImpl();
+		
+		UserService userService = UserServiceImpl.getUserService();
 		//userService.create(new User("test@test", "passtest", "firsttest", "lasttest", "userroletest"));
 		System.out.println(userService.readAll());
 		System.out.println(userService.read(2));

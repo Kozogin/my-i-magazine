@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import ua.lviv.lgs.dao.MagazineUsersDao;
 import ua.lviv.lgs.domain.MagazineUsers;
 import ua.lviv.lgs.utils.ConectionUtils;
@@ -21,29 +23,36 @@ public class MagazineUsersDaoImpl implements MagazineUsersDao{
 	private static String DELETE = "delete from magazine_users where users_id = ? and magazine_id = ?";
 	private static String DELETE_ALL_MAGAZINE = "delete from magazine_users where magazine_id = ?";
 	
+	private static Logger LOGGER = Logger.getLogger(MagazineUsersDaoImpl.class);
+	
 	private Connection connection; 
 	private PreparedStatement preparedStatement;
 	
-	public MagazineUsersDaoImpl() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		this.connection = ConectionUtils.openConnection();
+	public MagazineUsersDaoImpl() {
+		try {
+			this.connection = ConectionUtils.openConnection();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+			LOGGER.error(e);
+		}
 	}
 
 	@Override
-	public MagazineUsers create(MagazineUsers magazineUsers) throws SQLException {		
+	public MagazineUsers create(MagazineUsers magazineUsers) {		
+		
 		try {
-		preparedStatement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS);	
-		preparedStatement.setInt(1, magazineUsers.getUserId());
-		preparedStatement.setInt(2, magazineUsers.getProductId());				
-		preparedStatement.setDate(3, new Date(magazineUsers.getPurchaseDate().getTime()));	
+			preparedStatement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setInt(1, magazineUsers.getUserId());
+			preparedStatement.setInt(2, magazineUsers.getProductId());				
+			preparedStatement.setDate(3, new Date(magazineUsers.getPurchaseDate().getTime()));	
+			
+			preparedStatement.executeUpdate();
+			
+			ResultSet rs = preparedStatement.getGeneratedKeys();
+			magazineUsers.setId(1);		
 		
-		preparedStatement.executeUpdate();
-		
-		ResultSet rs = preparedStatement.getGeneratedKeys();
-		magazineUsers.setId(1);
-		
-		} catch (java.sql.SQLIntegrityConstraintViolationException e) {
-			System.out.println("Data repeat");;
-		}
+		} catch (SQLException e) {
+			LOGGER.error(e);
+		}	
 		return magazineUsers;
 	}
 
@@ -62,7 +71,7 @@ public class MagazineUsersDaoImpl implements MagazineUsersDao{
 			bucket = new MagazineUsers(id, userId, productId, purchaseDate);
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return bucket;
 	}
@@ -73,18 +82,26 @@ public class MagazineUsersDaoImpl implements MagazineUsersDao{
 	}
 
 	@Override
-	public void delete(Integer userId) throws SQLException {
-		preparedStatement = connection.prepareStatement(DELETE_ALL_MAGAZINE);				
-		preparedStatement.setInt(1, userId);			 
-		preparedStatement.executeUpdate();
-		
+	public void delete(Integer userId) {
+		try {
+			preparedStatement = connection.prepareStatement(DELETE_ALL_MAGAZINE);
+			preparedStatement.setInt(1, userId);			 
+			preparedStatement.executeUpdate();			
+		} catch (SQLException e) {
+			LOGGER.error(e);
+		}
 	}
 	
-	public void delete(Integer userId, Integer magazine_id) throws SQLException {
-		preparedStatement = connection.prepareStatement(DELETE);				
-		preparedStatement.setInt(1, userId);
-		preparedStatement.setInt(2, magazine_id);		 
-		preparedStatement.executeUpdate();		
+	public void delete(Integer userId, Integer magazine_id) {
+		try {
+			preparedStatement = connection.prepareStatement(DELETE);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setInt(2, magazine_id);		 
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {			
+			LOGGER.error(e);
+		}				
+				
 	}
 
 	@Override
@@ -103,10 +120,14 @@ public class MagazineUsersDaoImpl implements MagazineUsersDao{
 				}			
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
+			LOGGER.error(e);
+		}		
 		return magazineUsersRecords;
 	}
+	
+//	public static void main(String[] args) throws SQLException {
+//		MagazineUsersService b = new MagazineUsersServiceImpl();
+//		b.create(new MagazineUsers(8, 8, new java.util.Date()));
+//	}
 
 }

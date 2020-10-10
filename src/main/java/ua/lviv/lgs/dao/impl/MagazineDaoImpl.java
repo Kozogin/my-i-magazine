@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import ua.lviv.lgs.dao.MagazineDao;
 import ua.lviv.lgs.domain.Magazine;
 import ua.lviv.lgs.utils.ConectionUtils;
@@ -23,12 +25,18 @@ public class MagazineDaoImpl implements MagazineDao{
 	private Connection connection; 
 	private PreparedStatement preparedStatement;
 	
-	public MagazineDaoImpl() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		this.connection = ConectionUtils.openConnection();
+	private static Logger LOGGER = Logger.getLogger(MagazineDaoImpl.class);
+	
+	public MagazineDaoImpl() {
+		try {
+			this.connection = ConectionUtils.openConnection();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+			LOGGER.error(e);
+		}
 	}
 	
 	@Override
-	public Magazine create(Magazine magazine) throws SQLException {		
+	public Magazine create(Magazine magazine) {		
 		try {
 			preparedStatement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS);	
 			preparedStatement.setString(1, magazine.getName());
@@ -40,8 +48,8 @@ public class MagazineDaoImpl implements MagazineDao{
 			ResultSet rs = preparedStatement.getGeneratedKeys();
 			magazine.setId(1);
 			
-			} catch (java.sql.SQLIntegrityConstraintViolationException e) {
-				System.out.println("Data repeat");;
+			} catch (java.sql.SQLException e) {
+				LOGGER.error(e);
 			}
 			return magazine;
 	}
@@ -62,7 +70,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			magazine = new Magazine(name, description, price, isbn);
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return magazine;
 	}
@@ -78,7 +86,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.setInt(5, magazine.getId());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}	
 		return magazine;
 	}
@@ -88,9 +96,9 @@ public class MagazineDaoImpl implements MagazineDao{
 		try {
 			preparedStatement = connection.prepareStatement(DELETE_BY_ID);				
 			preparedStatement.setInt(1, id);
-			preparedStatement.executeUpdate();
-		} catch (java.sql.SQLIntegrityConstraintViolationException e) {
-		} catch (SQLException e) {	
+			preparedStatement.executeUpdate();		
+		} catch (SQLException e) {
+			LOGGER.error(e);
 		}
 	}
 
@@ -110,9 +118,8 @@ public class MagazineDaoImpl implements MagazineDao{
 				}			
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
+			LOGGER.error(e);
+		}		
 		return magazineRecords;
 	}
 

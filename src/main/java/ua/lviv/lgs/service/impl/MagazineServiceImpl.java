@@ -1,6 +1,5 @@
 package ua.lviv.lgs.service.impl;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import ua.lviv.lgs.dao.MagazineDao;
@@ -10,24 +9,22 @@ import ua.lviv.lgs.service.MagazineService;
 
 public class MagazineServiceImpl implements MagazineService{
 	
+	public static MagazineService magazineServiceImpl;
 	private MagazineDao magazineDao;
 	
-	public MagazineServiceImpl(){
-		try {
-			magazineDao = new MagazineDaoImpl();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	private MagazineServiceImpl(){
+		magazineDao = new MagazineDaoImpl();
+	}
+	
+	public static MagazineService getMagazineService() {		
+		if(magazineServiceImpl == null) {
+			magazineServiceImpl = new MagazineServiceImpl();
+		}		
+		return magazineServiceImpl;		
 	}
 
 	@Override
-	public Magazine create(Magazine magazine) throws SQLException {
+	public Magazine create(Magazine magazine){
 		return magazineDao.create(magazine);
 	}
 
@@ -42,7 +39,7 @@ public class MagazineServiceImpl implements MagazineService{
 	}
 
 	@Override
-	public void delete(Integer id) throws SQLException {
+	public void delete(Integer id) {
 		magazineDao.delete(id);
 	}
 
