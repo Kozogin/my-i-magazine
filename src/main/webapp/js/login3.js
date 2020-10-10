@@ -1,3 +1,7 @@
+function showAlertAfterRegistrarion(){
+	$('div.alert.alert-success').show();
+}
+
 $('.message a').click(function(){
 	loginRegisterSwitch();
 });
@@ -8,6 +12,10 @@ function loginRegisterSwitch(){
 		opacity: "toggle"
 			}, "slow");
 }
+
+/*
+ * $('button.login').click(function(){ $('div.alert.alert-success').show; });
+ */
 
 
 $(document).ready(function() {
@@ -35,14 +43,55 @@ $(document).ready(function() {
 		}
 		
 	$.post("registration", userRegistration, function(data) {
-	if (data == 'Success') {
-	$("form")[0].reset();
-	$("form")[1].reset();
-	loginRegisterSwitch();
+		if (data == 'Success') {
+		$("form")[0].reset();
+		$("form")[1].reset();
+		loginRegisterSwitch();
+		showAlertAfterRegistrarion();
+		
+		}
+	/* alert(data); */
+	});
+		
 	}
-	/*alert(data);*/
 	});
+	});
+
+$(document).ready(function() {
+	$("button.login").click(function() {
+		
+	var email = $("form.login-form input.email").val();
+	var password = $("form.login-form input.password").val();
+	
+	
+	if (email == '' || password == '') {
+		
+		alert("Please fill all login form...!!!!!!");	
+	} else {
+		
+		var userLogin = {
+				email : email,
+				password : password				
+		}
+		
+	$.post("login", userLogin, function(data) {
+		
+		if(data != ''){
+			var customUrl = "";
+			var urlContent = window.location.href.split('/');
+			for (var i = 0; i < urlContent.length - 1; i++) {
+				customUrl += urlContent[i] + "/";
+			}			
+			customUrl += data.destinationUrl;
+			
+			window.location.href = customUrl;
+			$("form")[1].reset();
+		}			
+		
+	});
+		
 	}
 	});
 	});
+
 

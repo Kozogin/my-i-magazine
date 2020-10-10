@@ -67,13 +67,13 @@ public class UserRegistrationServlet extends HttpServlet {
 					
 				
 				
-			} else {
+			} /*else {
 				try {
 					request.getRequestDispatcher("registrationForm.jsp").forward(request, response);
 				} catch (ServletException | IOException e) {
 					LOGGER.error(e);
 				}
-			}
+			}*/
 		}
 		
 	}

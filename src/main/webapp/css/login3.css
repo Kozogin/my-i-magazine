@@ -96,5 +96,5 @@ body {
 }
 
 div.login-page div.alert.alert-success{
-	display: none;
+	  display: none; 
 }
