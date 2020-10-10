@@ -13,6 +13,7 @@ public class Magazine {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.isbn = isbn;
 	}
 	
 	public Magazine(String name, String description, Double price, String isbn) {

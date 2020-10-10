@@ -17,6 +17,7 @@ public class MagazineUsers {
 	}
 
 	public MagazineUsers(Integer userId, Integer productId, Date purchaseDate) {
+		this.id = 0;
 		this.userId = userId;
 		this.productId = productId;
 		this.purchaseDate = purchaseDate;

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
@@ -54,14 +55,9 @@ public class UserLogInServlet extends HttpServlet {
 			
 			try {
 				
-				System.out.println("cabinet");
-				
-				
-//				request.setAttribute("email", email);
-				
-				/*response.setContentType("text/plain");
-				response.setCharacterEncoding("UTF-8");				
-				response.getWriter().write("cabinet.jsp");*/
+				HttpSession session = request.getSession(true);
+				session.setAttribute("userId", user.getId());
+				session.setAttribute("userEmail", user.getEmail());
 				
 				UserLogin userLogin = new UserLogin();
 				userLogin.destinationUrl = "cabinet.jsp";
@@ -74,23 +70,11 @@ public class UserLogInServlet extends HttpServlet {
 			    
 			    System.out.println("dispatcher ok");
 				
-				
-				
-				
-//				request.getRequestDispatcher("cabinet.jsp").forward(request, response);
-				
 			} catch (IOException e) {
 				System.out.println("seach mistake");
 				LOGGER.error(e);
 			}
-		} /*else {
-			try {
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			} catch (ServletException | IOException e) {
-				LOGGER.error(e);
-			}
-		}*/
-
+		} 
 
 	}
 

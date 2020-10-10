@@ -83,7 +83,10 @@ $(document).ready(function() {
 			var urlContent = window.location.href.split('/');
 			for (var i = 0; i < urlContent.length - 1; i++) {
 				customUrl += urlContent[i] + "/";
-			}			
+			}	
+			
+			
+			
 			customUrl += data.destinationUrl;			
 			
 			if(customUrl.includes('undefined')){

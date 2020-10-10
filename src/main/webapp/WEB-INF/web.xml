@@ -38,6 +38,20 @@
   	<servlet-name>LogoutServlet</servlet-name>
   	<servlet-class>ua.lviv.lgs.servlet.LogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>MagazinesServlet</display-name>
+  	<servlet-name>MagazinesServlet</servlet-name>
+  	<servlet-class>ua.lviv.lgs.servlet.MagazineServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>BucketServlet</display-name>
+  	<servlet-name>BucketServlet</servlet-name>
+  	<servlet-class>ua.lviv.lgs.servlet.BucketServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
@@ -57,6 +71,14 @@
   <servlet-mapping>
   	<servlet-name>LogoutServlet</servlet-name>
   	<url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MagazinesServlet</servlet-name>
+  	<url-pattern>/MagazinesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BucketServlet</servlet-name>
+  	<url-pattern>/BucketServlet</url-pattern>
   </servlet-mapping>
   
 </web-app>

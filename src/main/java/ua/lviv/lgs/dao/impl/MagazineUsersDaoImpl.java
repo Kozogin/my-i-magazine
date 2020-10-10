@@ -125,9 +125,5 @@ public class MagazineUsersDaoImpl implements MagazineUsersDao{
 		return magazineUsersRecords;
 	}
 	
-//	public static void main(String[] args) throws SQLException {
-//		MagazineUsersService b = new MagazineUsersServiceImpl();
-//		b.create(new MagazineUsers(8, 8, new java.util.Date()));
-//	}
 
 }

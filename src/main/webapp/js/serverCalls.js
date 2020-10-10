@@ -13,27 +13,45 @@ $(document).ready(
 						var isbn = $("form.createMagazineForm input.isbn")
 								.val();
 
-						 if (name == '' || price == '' || isbn == '') {
-						 alert("Please fill fields...!!!!!!");
-						 } else {
+						if (name == '' || price == '' || isbn == '') {
+							alert("Please fill fields...!!!!!!");
+						} else {
 
-						var magazineA = {
-							name : name,
-							description : description,
-							price : price,
-							isbn : isbn
-						};				
-						 
+							var magazineA = {
+								name : name,
+								description : description,
+								price : price,
+								isbn : isbn
+							};
 
-						$.post("magazineServ", magazineA, function(data) {
-							
-							if (data == 'Success') {
-								alert('Success magazine');
+							$.post("magazineContr", magazineA, function(data) {
 
-							}
+								if (data == 'Success') {
+									alert('Success magazine');
 
-						});
-
-						 }
+								}
+							});
+						}
 					});
 		});
+
+$(document).ready(function() {
+	$("button.closeButton").click(function() {
+		
+		var magazineId = jQuery(this).attr('magazine-id');
+		
+		$.post("bucketContr", {'magazineId' : magazineId}, function(data) {
+
+			if (data == 'Success') {
+				
+				alert('Success');
+				
+				$("[data-dismiss=modal]").trigger({type: "click"});
+				
+				/*$('#buyMagazineModal').hide();*/				
+
+			}
+		});
+
+	});
+});

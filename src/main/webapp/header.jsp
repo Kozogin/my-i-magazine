@@ -36,8 +36,9 @@
     </nav>
     
     
-    <div class="container-fluid">
+<!--     <div class="container-fluid">
           <div class="row">
+          
         <div class="col">
           <div class="card">
             <div class="card-body">
@@ -49,6 +50,7 @@
             </div>
           </div>
         </div>
+        
         <div class="col">
           <div class="card">
             <div class="card-body">
@@ -96,7 +98,7 @@
       </div>
       
       
-    </div>
+    </div> -->
     
     
   </div>

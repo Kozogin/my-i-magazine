@@ -1,4 +1,4 @@
-/*footer*/
+ /*footer*/
 .col_white_amrc { color:#FFF;}
 footer { width:100%; 
 		background-color:#263238; 
@@ -6,7 +6,7 @@ footer { width:100%;
 		padding:10px 0px 25px 0px ;
 		z-index: 1;
 		
-	  	position: absolute;
+	  	position: fixed;
 	  	right: 0;
 	  	bottom: 0;
 	  	left: 0;

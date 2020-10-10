@@ -65,16 +65,17 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.setInt(1, id); 
 			ResultSet result = preparedStatement.executeQuery();
 			result.next();
+			
 			String name =  result.getString("name");
 			String description =  result.getString("description");
 			Double price = result.getDouble("price");
 			String isbn =  result.getString("isbn");			
 			
-			magazine = new Magazine(name, description, price, isbn);
+			magazine = new Magazine(id, name, description, price, isbn);
 			
 		} catch (SQLException e) {
 			LOGGER.error(e);
-		}
+		} 
 		return magazine;
 	}
 	
@@ -92,7 +93,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			Double price = result.getDouble("price");
 						
 			
-			magazine = new Magazine(name, description, price, isbn);
+			magazine = new Magazine(id, name, description, price, isbn);
 			
 		} catch (SQLException e) {
 			LOGGER.error(e);
@@ -134,12 +135,13 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement = connection.prepareStatement(READ_ALL);
 			ResultSet result = preparedStatement.executeQuery();
 				while(result.next()) {
+					Integer id = result.getInt("id");
 					String name =  result.getString("name");
 					String description =  result.getString("description");
 					Double price = result.getDouble("price");
 					String isbn =  result.getString("isbn");
 					
-					magazineRecords.add(new Magazine(name, description, price, isbn));
+					magazineRecords.add(new Magazine(id, name, description, price, isbn));
 				}			
 			
 		} catch (SQLException e) {
